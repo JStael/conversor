@@ -16,31 +16,12 @@
             <div class="currency">
                 <div class="group1">
                     <ul class="menu">
-                        <li> <a href="#">BRL</a> </li>
-                        <li> <a href="#">USD</a> </li>
-                        <li> <a href="#">CAD</a> </li> 
-                        <li> <a href="#">EUR</a> </li>
-                        <li> <a href="#">GBP</a> </li>
-                        <li> <a href="#">JPY</a> </li>
-                        <li> <a href="#">AUD</a> </li>
-                        <li> <a href="#">CHF</a> </li>
-                        <li> <a href="#">CNH</a> </li>
-                        <li> <a href="#">ARS</a> </li>
-                        <li> <a href="#">TRY</a> </li>
-                        <li> <a href="#">NZD</a> </li>
-                        <li> <a href="#">RUB</a> </li>
-                        <li> <a href="#">ZAR</a> </li>
-                        <li> <a href="#">MXN</a> </li>
-                        <li> <a href="#">CLP</a> </li>
-                        <li> <a href="#">COP</a> </li>
-                        <li> <a href="#">PEN</a> </li>
-                        <li> <a href="#">PYG</a> </li>
-                        <li> <a href="#">SEK</a> </li>
-                        <li> <a href="#">UYU</a> </li>
-                        <li> <a href="#">VEF</a> </li>
-                        <li> <a href="#">XAF</a> </li>
-                        <li> <a href="#">XCD</a> </li>
+
+                        <li v-for="currency in currencys" :key="currency.id"> <a href="#">  {{ currency.label }} </a> </li> 
+
                     </ul>
+                    <span><img src="../assets/arrow-down.png" alt="seta para clique"></span>
+                      
                 </div>
                 <div class="swap-button">
                     <div class="swap">
@@ -49,36 +30,17 @@
                 </div>
                 <div class="group2">
                     <ul class="menu">
-                        <li> <a href="#">BRL</a> </li>
-                        <li> <a href="#">USD</a> </li>
-                        <li> <a href="#">CAD</a> </li>
-                        <li> <a href="#">EUR</a> </li>
-                        <li> <a href="#">GBP</a> </li>
-                        <li> <a href="#">JPY</a> </li>
-                        <li> <a href="#">AUD</a> </li>
-                        <li> <a href="#">CHF</a> </li>
-                        <li> <a href="#">CNH</a> </li>
-                        <li> <a href="#">ARS</a> </li>
-                        <li> <a href="#">TRY</a> </li>
-                        <li> <a href="#">NZD</a> </li>
-                        <li> <a href="#">RUB</a> </li>
-                        <li> <a href="#">ZAR</a> </li>
-                        <li> <a href="#">MXN</a> </li>
-                        <li> <a href="#">CLP</a> </li>
-                        <li> <a href="#">COP</a> </li>
-                        <li> <a href="#">PEN</a> </li>
-                        <li> <a href="#">PYG</a> </li>
-                        <li> <a href="#">SEK</a> </li>
-                        <li> <a href="#">UYU</a> </li>
-                        <li> <a href="#">VEF</a> </li>
-                        <li> <a href="#">XAF</a> </li>
-                        <li> <a href="#">XCD</a> </li>
+
+                        <li v-for="currency in currencys" :key="currency.label"> <a href="#"> {{ currency.label }} </a> </li>
+                       
                     </ul>
+                    <span><img src="../assets/arrow-down.png" alt="seta para clique"></span>
                 </div>
             </div>
             <div class="display">
                 <div class="input-value">
                     <input type="number" v-model="coinA">
+                    <p> {{ coinA.length }} /5000</p>
                 </div>
                 <div class="output-value">
                     <p> {{ coinB }} </p>
@@ -86,10 +48,29 @@
             </div>
             
         </div>
-
-        
-
-
+        <div class="feedback">
+            <a href="#"><em>Enviar feedback</em></a>
+        </div>
+        <footer>
+            <div>
+                <div class="circle">
+                    <a href="#"><img src="../assets/past.png" alt="histórico"></a>
+                </div>
+                <p>Histórico</p>
+            </div>
+            <div>
+                <div class="circle">
+                    <a href="#"><img src="../assets/star.png" alt=""></a>
+                </div>
+                <p>Salvas</p>
+            </div>
+            <div>
+                <div class="circle">
+                    <a href=""><img src="../assets/community.png" alt="comunidade"></a>
+                </div>
+                <p>Comunidade</p>
+            </div>
+        </footer>
     </div>
 </template>
 
@@ -164,4 +145,3 @@ export default {
 </script>
 
 <style src="./conversor.scss" lang="scss" scoped></style>
-<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
