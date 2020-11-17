@@ -20,7 +20,7 @@
                         <li v-for="currency in currencys" :key="currency.id"> <a href="#">  {{ currency.label }} </a> </li> 
 
                     </ul>
-                    <span><img src="../assets/arrow-down.png" alt="seta para clique"></span>
+                    <span @click="modal1 = !modal1"><div :class="{rotate: modal1}"><img src="../assets/arrow-up.png"></div> </span>
                       
                 </div>
                 <div class="swap-button">
@@ -34,9 +34,18 @@
                         <li v-for="currency in currencys" :key="currency.label"> <a href="#"> {{ currency.label }} </a> </li>
                        
                     </ul>
-                    <span><img src="../assets/arrow-down.png" alt="seta para clique"></span>
+                    <span @click="modal2 = !modal2"><div :class="{rotate: modal2}"><img src="../assets/arrow-up.png"></div></span>
                 </div>
             </div>
+
+            <div class="all-currency" :class="{ moreCurrencys: modal1, modal2 }">
+                <ul class="menu">
+
+                    <li v-for="currency in currencys" :key="currency.label"> <a href="#"> {{ currency.label }} </a> </li>
+                       
+                </ul>
+            </div>
+
             <div class="display">
                 <div class="input-value">
                     <input type="number" v-model="coinA">
@@ -118,12 +127,15 @@ export default {
                 { id: 22, label: 'VEF' },
                 { id: 23, label: 'XAF' },
                 { id: 24, label: 'XCD' },
-            ]
+            ],
+            modal1: true,
+            modal2: true,
+            rotate: true
         };
     },
     mounted () {
         this.from_to = `${this.currencyA}_${this.currencyB}`
-        this.url = "https://free.currconv.com/api/v7/convert?q=" + this.from_to + "&compact=ultra&apiKey=ff13ef5114b17bd0ea42"
+        this.url = `https://free.currconv.com/api/v7/convert?q=${this.from_to}&compact=ultra&apiKey=${process.env.VUE_APP_CURRCONV_TOKEN}`
     },
     watch: {
         coinA (value) {

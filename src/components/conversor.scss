@@ -96,6 +96,7 @@ $light-gray: #E0E0E0;
     } 
     
     .currency ul li a:hover {
+        color:  #4784F3;
         border-bottom: 3px solid #4784F3;
         margin-bottom: -4px;
     }
@@ -104,7 +105,7 @@ $light-gray: #E0E0E0;
         display: flex;
         align-items: center;
         text-decoration: none;
-        color: #4784F3;
+        color: $dark-gray;
         padding: 0px 30px;
         height: 40px;
         width: 100%;
@@ -123,6 +124,23 @@ $light-gray: #E0E0E0;
         display: flex;
         justify-content: space-around;
     }
+
+    .rotate{
+        content: url('../assets/arrow-down.png');
+        width: 15px;
+        height: 9px;
+        transform: rotate(180deg);
+        transition: transform .3s;
+        &.rotate{
+            content: url('../assets/arrow-up.png');
+            width: 15px;
+            height: 9px;
+            transform: rotate(180deg);
+            // transition: transform .3s;
+        }
+    }
+    
+
 
     .swap-button{
         margin: auto;
@@ -149,6 +167,53 @@ $light-gray: #E0E0E0;
         width: 47.5%;
         display: flex;
         justify-content: space-around;
+    }
+
+    .moreCurrencys {
+        display: none;
+    }
+
+    .all-currency {
+        margin: 50px 0 0 -1px;
+        height: 150px;
+        width: 100%;
+        max-width: 1280px;
+        background: white;
+        position: absolute;
+        border: 1px solid $light-gray;
+        box-shadow: 2px 2px 2px #c5c5c5;
+        border-radius: 0 0 15px 10px;
+    }
+
+    .all-currency ul {
+        display: flex;
+        max-width: 100%;
+        font-size: .9em;
+        padding: 0;
+        margin:  30px auto;
+        overflow: hidden;
+        flex-wrap: wrap;
+        list-style: none;
+    }
+
+    .all-currency li {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        height: 50px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    
+    .all-currency li a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: $dark-gray;
+        padding: 0px 30px;
+        height: 40px;
+        width: 100%;
+        
     }
 
     .display {
