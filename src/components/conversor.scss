@@ -2,308 +2,477 @@ $gray-square-height: 150px;
 $dark-gray: #5F6468;
 $light-gray: #E0E0E0;
 
-    .conversor {
-        height: 100vh;
-    }
+.conversor {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+}
 
-    .header {   
-        height: 48px;
-        border-bottom: 1px solid $light-gray;
-        padding: 8px;
-    }
+.header {
+    height: 48px;
+    width: 100vw;
+    position: fixed;
+    border-bottom: 1px solid $light-gray;
+    padding: 8px;
+    background-color: white;
+    z-index: 1;
+}
 
-    .top {
+.top {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.menu-button {
+    height: 24px;
+    width: 24px;
+    padding: 12px;
+    margin: 0 4px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.menu-button:hover {
+    background-color: #F0F0F0;
+    border-radius: 50%;
+}
+
+.menu-button img {
+    color: $dark-gray;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand img {
+    padding-right: 8px;
+}
+
+.aside {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: white;
+    z-index: 1;
+    height: 100vh;
+    width: 0%;
+    opacity: 0;
+    box-shadow: 17px 0px 17px -18px rgba(158,158,158,1);
+
+    .title {
         display: flex;
         align-items: center;
-        height: 100%;
+        margin-top: 30px;
+        margin-left: 20px;
+
+        .aside-logo {
+            width: 80%;
+            white-space: nowrap;
+            img {
+                margin-right: 10px;
+            }
+        }
+        .aside-close {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+        .aside-close:hover {
+            background-color: #F0F0F0;
+            border-radius: 50%;
+        }
     }
 
-    .menu-button {
-        height: 24px;
-        width: 24px;
-        padding: 12px;
-        margin: 0 4px;
-        position: relative;
+    h3 {
+        margin-top: 30px;
+        margin-left: 20px;
+    }
+
+    .aboutText {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
+        align-self: flex-end;
+        width: 80%;
+        padding: 20px;
+        text-align: justify;
     }
 
-    .menu-button:hover {
-        background-color: #F0F0F0;
-        border-radius: 50%;
+    &.expand {
+        animation: showMenu 0.5s ease;
+        animation-fill-mode: forwards;
     }
 
-    .menu-button img {
-        color: $dark-gray;
+    &.minimize {
+        animation: hideMenu 0.5s ease;
+        animation-fill-mode: forwards;
     }
 
-    .brand {
+    @keyframes showMenu {
+        from {
+            opacity: 0;
+            width: 0%;
+        }
+        to {
+            opacity: 1;
+            width: 20%;
+        }
+    }
+
+    @keyframes hideMenu {
+        from {
+            opacity: 1;
+            width: 20%;
+        }
+        to {
+            opacity: 0;
+            width: 0%;
+        }
+    }
+}
+
+.gray-square {
+    background-color: #FAFAFA;
+    height: $gray-square-height;
+    margin-right: 15px;
+    margin-top: 64px;
+    border-right: 1px solid $light-gray;
+    border-bottom: 1px solid $light-gray;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1280px;
+    height: 200px;
+    border: 1px solid  $light-gray;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px #c5c5c5;
+    margin-top: ($gray-square-height / -2);
+    margin-right: 15px;
+    background-color: #fff;
+    align-self: center;
+}
+
+
+.currency {
+    display: flex;
+    width: 100%;
+    position: relative;
+    border-bottom: 1px solid $light-gray;
+}
+
+.currency ul {
+    display: flex;
+    justify-content: flex-start;
+    max-width: 90%;
+    font-size: .9em;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.currency ul li {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: $dark-gray;
+    height: 40px;
+    cursor: pointer;
+
+    label {
         display: flex;
-        align-items: center;
-        justify-content: center;
     }
+}
 
-    .brand img {
-        padding-right: 8px;
-    }
+.currency-menu {
+    width: 45px;
+    padding: 10px 20px;
+    cursor: pointer;
+    white-space: nowrap;
 
-    .gray-square {
-        background-color: #FAFAFA;
-        height: $gray-square-height;
-        // margin-top: 0;
-        border-bottom: 1px solid $light-gray;
-    }
-
-    .form {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        max-width: 1280px;
-        height: 200px;
-        border: 1px solid  $light-gray;
-        border-radius: 10px;
-        box-shadow: 2px 2px 2px #c5c5c5;
-        margin: ($gray-square-height / -2) auto 0;
-        background-color: #fff;
-    }
-
-
-    .currency {
-        display: flex;
-        width: 100%;
-        position: relative;
-        border-bottom: 1px solid $light-gray;
-    } 
-
-    .currency ul {
-        display: flex;
-        max-width: 90%;
-        font-size: .9em;
-        padding: 0;
-        margin: 0;
-        overflow: hidden;
-    }
-
-    .currency ul li {
-        display: flex;
-        align-items: center;
-        list-style: none;
-        height: 50px;
-        font-weight: 600;
-        cursor: pointer;
-    } 
-    
-    .currency ul li a:hover {
+    &.is--checked {
         color:  #4784F3;
         border-bottom: 3px solid #4784F3;
-        margin-bottom: -4px;
+        margin-bottom: 2px;
+        padding-bottom: 5px;
     }
+}
+
+.currency-menu:hover {
+    color:  #4784F3;
+    border-bottom: 3px solid #4784F3;
+    margin-bottom: 2px;
+    padding-bottom: 5px;
+}
+
+.currency span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    cursor: pointer;
+}
+
+.checked {
+    color:  #4784F3;
+    border-bottom: 3px solid #4784F3;
+    margin-bottom: 2px;
+    padding-bottom: 5px;
+}
+
+.group1{
+    width: 47.5%;
+    display: flex;
+    justify-content: space-around;
     
-    .currency ul li a {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        color: $dark-gray;
-        padding: 0px 30px;
-        height: 40px;
-        width: 100%;
+    .menu li{
+        white-space: wrap;
     }
+}
 
-    .currency span {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 30px;
-        cursor: pointer;
-    }
 
-    .group1{
-        width: 47.5%;
-        display: flex;
-        justify-content: space-around;
-    }
-
-    .rotate{
-        content: url('../assets/arrow-down.png');
+.rotate{
+    content: url('../assets/arrow-down.png');
+    width: 15px;
+    height: 9px;
+    transform: rotate(180deg);
+    transition: transform .3s;
+    &.rotate{
+        content: url('../assets/arrow-up.png');
         width: 15px;
         height: 9px;
         transform: rotate(180deg);
-        transition: transform .3s;
-        &.rotate{
-            content: url('../assets/arrow-up.png');
-            width: 15px;
-            height: 9px;
-            transform: rotate(180deg);
-            // transition: transform .3s;
+        // transition: transform .3s;
+    }
+}
+
+.swap-button{
+    margin: auto;
+    height: 100%;
+    width: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+}
+
+.swap-button .swap {
+    width: 15px;
+    height: 15px;
+    content: url("../assets/swap.png");
+}
+
+.swap-button .swap:hover {
+    content: url("../assets/swap-hover.png");
+}
+
+.group2 {
+    width: 47.5%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.moreCurrencys {
+    display: none;
+}
+
+.all-currency {
+    text-align: center;
+    margin: 40px 0 0 -1px;
+    width: 100%;
+    max-width: 1280px;
+    background: white;
+    position: absolute;
+    border: 1px solid $light-gray;
+    box-shadow: 2px 2px 2px #c5c5c5;
+    border-radius: 0 0 15px 10px;
+}
+
+.all-currency li {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    height: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 250px;
+}
+
+.checked {
+    color:  #4784F3;
+    border-bottom: 3px solid #4784F3;
+    margin-bottom: -4px;
+}
+
+.display {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.display .input-value {
+    width: 50%;
+    height: 100%;
+    border-right: 1px solid $light-gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.display .input-value p {
+    align-self: flex-end;
+    margin-right: 50px;
+    font-size: .8em;
+    color: $dark-gray;
+}
+
+.display input {
+    width: 90%;
+    height: 50%;
+    font-size: 1.5em;
+    border: none;
+    outline: none;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+
+.display .output-value {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    background-color: #f7f5f5;
+}
+
+.display .output-value p {
+    font-size: 1.5em;
+    margin-left: 4%;
+    width: 90%;
+}
+
+.feedback {
+    font-size: .7em;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 1280px;
+    margin: 10px 0px;
+    align-self: center;
+}
+
+.feedback button {
+    text-decoration: none;
+    color: $dark-gray;
+    margin-right: 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    outline: none;
+    font-style: italic;
+}
+
+
+.moddalTitle {
+    background-color: #546E7B;
+    color: whitesmoke;
+    padding: 1px 20px
+}
+.modalContent {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+.modalDescription {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+
+    width: 80%;
+    height: 100px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 92%;
+    height: 300px;
+    align-items: center;
+
+
+    input, textarea {
+        width: 80%;
+        padding: 5px;
+        margin-top: 20px;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: row-reverse;
+        align-self: flex-end;
+        margin-right: 8%;
+
+        button {
+            border: none;
+            background-color: #546E7B;
+            color: whitesmoke;
+            padding: 5px 10px;
+            margin-right: 2px;
+            margin-top: 20px;
+            width: 80px;
+            cursor: pointer;
+        }
+
+        .btn-cancel {
+            background-color: #e3e3e3;
+            border: 1px solid #546E7B;
+            color: #546E7B;
         }
     }
-    
 
 
-    .swap-button{
-        margin: auto;
-        height: 100%;
-        width: 5%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        
-    }
+}
 
-    .swap-button .swap {
-        width: 15px;
-        height: 15px;
-        content: url("../assets/swap.png");
-    }
 
-    .swap-button .swap:hover {
-        content: url("../assets/swap-hover.png");
-    }
+footer {
+    width: 30%;
+    display: flex;
+    justify-content:space-around;
+    margin: 80px auto;
+}
 
-    .group2 {
-        width: 47.5%;
-        display: flex;
-        justify-content: space-around;
-    }
+footer div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    font-size: .9rem;
+    font-weight: 600;
+    color: $dark-gray;
+}
 
-    .moreCurrencys {
-        display: none;
-    }
+.circle {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    width: 70px;
+    height: 70px;
+    border: 1px solid $light-gray;
+    border-radius: 50%;
+    cursor: pointer;
+}
 
-    .all-currency {
-        margin: 50px 0 0 -1px;
-        height: 150px;
-        width: 100%;
-        max-width: 1280px;
-        background: white;
-        position: absolute;
-        border: 1px solid $light-gray;
-        box-shadow: 2px 2px 2px #c5c5c5;
-        border-radius: 0 0 15px 10px;
-    }
-
-    .all-currency ul {
-        display: flex;
-        max-width: 100%;
-        font-size: .9em;
-        padding: 0;
-        margin:  30px auto;
-        overflow: hidden;
-        flex-wrap: wrap;
-        list-style: none;
-    }
-
-    .all-currency li {
-        display: flex;
-        align-items: center;
-        list-style: none;
-        height: 50px;
-        font-weight: 600;
-        cursor: pointer;
-    }
-    
-    .all-currency li a {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        color: $dark-gray;
-        padding: 0px 30px;
-        height: 40px;
-        width: 100%;
-        
-    }
-
-    .display {
-        width: 100%;
-        height: 100%;
-        display: flex;
-    }
-
-    .display .input-value {
-        width: 50%;
-        height: 100%;
-        border-right: 1px solid $light-gray;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .display .input-value p {
-        align-self: flex-end;
-        margin-right: 50px;
-        font-size: .8em;
-        color: $dark-gray;
-    }
-
-    .display input {
-        width: 90%;
-        height: 50%;
-        font-family: Avenir, Helvetica, Arial, sans-serif;
-        font-size: 1.5em;
-        border: none;
-        outline: none;
-    }
-
-    .display .output-value {
-        width: 50%;
-        height: 100%;
-        display: flex;
-        background-color: #f7f5f5;
-    }
-
-    .display .output-value p {
-        font-size: 1.5em;
-        margin-left: 4%;
-        width: 90%;
-    }
-
-    .feedback {
-        font-size: .7em;
-        display: flex;
-        justify-content: flex-end;
-        width: 100%;
-        max-width: 1280px;
-        margin: 10px auto;
-    }
-
-    .feedback a {
-        text-decoration: none;
-        color: $dark-gray;
-    }
-
-    footer {
-        width: 30%;
-        display: flex;
-        justify-content:space-around;
-        margin: 80px auto;
-    }
-
-    footer div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content:center;
-        font-size: .9rem;
-        font-weight: 600;
-        color: $dark-gray;
-    }
-
-    .circle {
-        display: flex;
-        align-items: center;
-        justify-content:center;
-        width: 70px;
-        height: 70px;
-        border: 1px solid $light-gray;
-        border-radius: 50%;
-    }
-
-    .circle a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
